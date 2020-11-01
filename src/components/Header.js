@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <div>
             <AppBar 
-                position="static"
+                className="header"
             >
                 <Toolbar>
                     <Typography variant="h6" color="secondary">Broccoli &amp; Co.</Typography>
