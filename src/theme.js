@@ -2,23 +2,23 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 // A custom theme for this app
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#FFFFFF",
+    palette: {
+        primary: {
+        main: "#FFFFFF",
+        },
+        secondary: {
+        main: "#00DBB3",
+        },
+        background: {
+        default: "#fff",
+        },
     },
-    secondary: {
-      main: "#00DBB3",
+    typography: {
+        fontFamily: ["Poppins", "Roboto", "sans-serif"].join(","),
+        body1: {
+            fontWeight: "200"
+        }
     },
-    background: {
-      default: "#fff",
-    },
-  },
-  typography: {
-    fontFamily: ["Poppins", "Roboto", "sans-serif"].join(","),
-    body1: {
-        fontWeight: "200"
-    }
-  },
 });
 
 export default theme;

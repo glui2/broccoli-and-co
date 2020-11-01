@@ -8,9 +8,10 @@ import { Typography } from "@material-ui/core";
 const Header = () => {
 
     return (
-        <div>
+        <div className="header">
             <AppBar 
-                className="header"
+                className="header" 
+                color="primary"
             >
                 <Toolbar>
                     <Typography variant="h6" color="secondary">Broccoli &amp; Co.</Typography>
