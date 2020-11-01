@@ -51,8 +51,7 @@
 }
 
 .title-text-box {
-  width: 50%;
-  min-width: 500px;
+  max-width: 500px;
   margin: auto;
 }
 

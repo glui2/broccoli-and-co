@@ -5,8 +5,8 @@ const Footer = () => {
 
     return (
         <Box className="footer" bgcolor="primary.main">
-            <Typography variant="body1">Made with 💚 in Melbourne. </Typography>
-            <Typography variant="body1">&#169; 2020 Broccoli &amp; Co. All rights reserved. </Typography>
+            <Typography variant="body2">Made with 💚 in Melbourne. </Typography>
+            <Typography variant="body2">&#169; 2020 Broccoli &amp; Co. All rights reserved. </Typography>
         </Box>
     )
 }

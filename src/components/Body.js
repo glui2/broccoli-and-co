@@ -10,7 +10,7 @@ const Body = () => {
             <Grid container direction="column" className="title-container">
                 <Grid item xs={12}>
                     <Box className="title-text-box">
-                        <Grid container justify="center" spacing={3}>
+                        <Grid container justify="center">
                             <Grid item>
                                 <Typography variant="h3" color="primary">A better way to enjoy every day.</Typography>
                             </Grid>
