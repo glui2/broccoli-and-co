@@ -4,17 +4,17 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#e53232",
+      main: "#FFFFFF",
     },
     secondary: {
-      main: "#32669d",
+      main: "#00DBB3",
     },
     background: {
       default: "#fff",
     },
   },
   typography: {
-    fontFamily: ["Archivo Narrow", "Roboto", "sans-serif"].join(","),
+    fontFamily: ["Poppins", "Roboto", "sans-serif"].join(","),
   },
 });
 

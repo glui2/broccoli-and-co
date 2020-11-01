@@ -13,7 +13,7 @@ const Header = () => {
                 position="static"
             >
                 <Toolbar>
-                    <Typography variant="h6">Broccoli &amp; Co.</Typography>
+                    <Typography variant="h6" color="secondary">Broccoli &amp; Co.</Typography>
                 </Toolbar>
             </AppBar>
         </div>
