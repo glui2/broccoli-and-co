@@ -4,13 +4,15 @@ import { useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Typography } from "@material-ui/core";
+import "./Header.scss";
 
 const Header = () => {
 
     return (
-        <div>
+        <div className="header">
             <AppBar 
-                className="header"
+                className="header" 
+                color="primary"
             >
                 <Toolbar>
                     <Typography variant="h6" color="secondary">Broccoli &amp; Co.</Typography>
