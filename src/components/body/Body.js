@@ -1,10 +1,17 @@
-import React from "react";
+import { React, useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
 import "./Body.scss";
 
 const Body = () => {
+
+    const [isFormVisible, setIsFormVisible] = useState(false);
+
+    const buttonClickHandler = () => { 
+        console.log(isFormVisible);
+        setIsFormVisible(true); 
+    }
 
     return (
         <div className="body-section">
@@ -19,7 +26,7 @@ const Body = () => {
                                 <Typography variant="body1" color="secondary">Be the first to know when we launch.</Typography>
                             </Grid>
                             <Grid item>
-                                <Button variant="contained" className="inviteButton">Request an Invite</Button>
+                                <Button variant="contained" className="inviteButton" onClick={buttonClickHandler}>Request an Invite</Button>
                             </Grid>
                         </Grid>
                     </Box>
