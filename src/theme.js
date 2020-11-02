@@ -16,6 +16,7 @@ const theme = createMuiTheme({
     typography: {
         fontFamily: ["Poppins", "Roboto", "sans-serif"].join(","),
         h3: {
+            textShadow: "2px 2px rgba(0,0,0,0.3)",
             fontSize: "1.3rem",
             "@media (min-width:600px)": {
                 fontSize: "3rem",

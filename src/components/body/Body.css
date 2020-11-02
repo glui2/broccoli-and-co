@@ -1,0 +1,20 @@
+/* Body */
+.body-section {
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background: url("./broccoli_dark.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.title-container {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.title-text-box {
+  max-width: 500px;
+  margin: auto;
+}
