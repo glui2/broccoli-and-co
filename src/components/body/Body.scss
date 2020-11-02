@@ -1,11 +1,18 @@
+// scss variables
+$backgroundImage: url("./broccoli_dark.jpg");
+
 /* Body */
+
 .body-section {
   margin: auto;
   width: 100vw;
   height: 100vh;
-  background: url("./broccoli_dark.jpg");
-  background-size: cover;
-  background-position: center;
+  background: {
+    image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      $backgroundImage;
+    size: cover;
+    position: center;
+  }
 }
 
 .title-container {
