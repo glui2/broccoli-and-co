@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
-import "./Footer.css";
+import "./Footer.scss";
 
 const Footer = () => {
 
