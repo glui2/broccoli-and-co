@@ -1,5 +1,6 @@
 // scss variables
 $backgroundImage: url("./broccoli_dark.jpg");
+$fontColour: white;
 
 /* Body */
 
@@ -24,4 +25,9 @@ $backgroundImage: url("./broccoli_dark.jpg");
 .title-text-box {
   max-width: 500px;
   margin: auto;
+}
+
+.inviteButton {
+  background: linear-gradient(45deg, #dd7003 30%, #f99a3b 90%);
+  color: $fontColour;
 }

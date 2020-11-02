@@ -5,12 +5,12 @@ import Body from "./Body";
 describe("Body", () => {
     it("Should display form pop up when 'Request an Invite' is clicked", () => {
         // arrange 
-        const {getByTestId, fireEvent} = render(<Body/>); 
+        const { getByText } = render(<Body/>); 
 
         // act 
-        fireEvent.click(getByTestId("inviteButton"));
+        fireEvent.click(getByText("Request an Invite"));
 
         // assert 
-        expect(getByTestId("inviteForm")).toBeVisible();
+        expect(getByText("inviteForm")).toBeVisible();
     })
 })
