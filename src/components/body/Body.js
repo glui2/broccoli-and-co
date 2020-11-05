@@ -4,7 +4,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
+// import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -34,7 +34,6 @@ const Body = () => {
     var errorMessage = "";
     if (confirmEmailAddress && emailAddress !== confirmEmailAddress) {
       errorMessage = "Email addresses do not match.";
-      console.log("dont match");
     } else if (!emailAddress) {
       errorMessage = "Please enter an email address.";
     } else if (
@@ -81,7 +80,7 @@ const Body = () => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText className="dialog-text">
-            Please fill in your details below, and click Send to receive an
+            Please fill in your details below, and click Submit to receive an
             invitation.
           </DialogContentText>
           <Formik
@@ -102,11 +101,19 @@ const Body = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                setSubmitting(false);
-                alert(JSON.stringify(values, null, 2));
-                setIsFormVisible(false);
-              }, 500);
+              console.log("POST values");
+              axios
+                .post(
+                  "https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
+                  { name: values.fullName, email: values.email }
+                )
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+              setSubmitting(false);
             }}
           >
             {({ submitForm, isSubmitting }) => (
@@ -142,9 +149,15 @@ const Body = () => {
                   fullWidth
                 />
                 {isSubmitting && <LinearProgress />}
-                <Button variant="contained" onClick={submitForm}>
-                  Submit
-                </Button>
+                <div className="submit-button">
+                  <Button
+                    variant="contained"
+                    disabled={isSubmitting}
+                    onClick={submitForm}
+                  >
+                    Submit
+                  </Button>
+                </div>
               </Form>
             )}
           </Formik>

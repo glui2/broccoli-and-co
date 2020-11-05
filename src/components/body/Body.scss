@@ -25,6 +25,11 @@ $backgroundImage: url("./broccoli_dark.jpg");
   margin: auto;
 }
 
+.dialog-box {
+  text-align: center;
+  margin: auto;
+}
+
 .dialog-title {
   margin: auto;
   text-align: center;
@@ -36,11 +41,7 @@ $backgroundImage: url("./broccoli_dark.jpg");
   font-size: 1rem;
 }
 
-.dialog-buttons {
+.submit-button {
   margin: 2vh auto;
   justify-content: center;
-}
-
-.invite-form {
-  text-align: center;
 }
