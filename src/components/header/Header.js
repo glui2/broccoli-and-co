@@ -12,10 +12,10 @@ const Header = () => {
         <div className="header">
             <AppBar 
                 className="header" 
-                color="primary"
+                color="secondary"
             >
                 <Toolbar>
-                    <Typography variant="h6" color="secondary">Broccoli &amp; Co.</Typography>
+                    <Typography variant="h6" color="primary">Broccoli &amp; Co.</Typography>
                 </Toolbar>
             </AppBar>
         </div>

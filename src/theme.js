@@ -4,13 +4,10 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
     palette: {
         primary: {
-        main: "#FFFFFF",
+            main: "#33A721",
         },
         secondary: {
-        main: "#27C227",
-        },
-        background: {
-        default: "#fff",
+            main: "#FFFFFF",
         },
     },
     typography: {
@@ -22,11 +19,17 @@ const theme = createMuiTheme({
                 fontSize: "3rem",
             }
         },
-        body1: {
-            fontWeight: "200",
-            fontSize: "1rem",
+        h6: {
+            fontSize: "0.8rem",
             "@media (min-width:600px)": {
-                fontSize: "1.5rem",
+                fontSize: "1.2rem",
+            }
+        },
+        body1: {
+            fontWeight: "300",
+            fontSize: "0.7rem",
+            "@media (min-width:600px)": {
+                fontSize: "1rem",
             }
         },
         body2: {
