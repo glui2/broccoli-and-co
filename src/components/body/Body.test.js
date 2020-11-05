@@ -12,5 +12,5 @@ describe("Body", () => {
 
         // assert 
         expect(getByText('Submit','button')).toBeVisible();
-    })
+    });
 })

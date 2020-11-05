@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, useScrollTrigger } from "@material-ui/core";
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
@@ -14,8 +14,27 @@ import "./Body.scss";
 const Body = () => {
 
     const [isFormVisible, setIsFormVisible] = useState(false);
+    const [fullName, setFullName] = useState(''); 
+    const [email, setEmail] = useState('');
+    const [confirmEmail, setConfirmEmail] = useState('');
 
-    const buttonClickHandler = () => { 
+    const handleNameChange = (e) => {
+        console.log(e);
+        setFullName(e.target.value)
+    }
+
+    const handleEmailChange = (e) => {
+        console.log(e);
+        setEmail(e.target.value)
+    }
+
+    const handleConfirmEmailChange = (e) => {
+        console.log(e);
+        setConfirmEmail(e.target.value)
+    }
+
+    const inviteButtonClickHandler = () => { 
+        console.log(isFormVisible);
         setIsFormVisible(true); 
     }
 
@@ -46,7 +65,7 @@ const Body = () => {
                                 <Typography variant="h6" color="secondary">Be the first to know when we launch.</Typography>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button variant="contained" className="invite-button" onClick={buttonClickHandler}>Request an Invite</Button>
+                                <Button variant="contained" className="invite-button" onClick={inviteButtonClickHandler}>Request an Invite</Button>
                             </Grid>
                         </Grid>
                     </Box>
@@ -56,9 +75,9 @@ const Body = () => {
                 <DialogTitle className="dialog-title">Request an invitation</DialogTitle>
                 <DialogContent>
                     <DialogContentText className="dialog-text">Please fill in your details below, and click Send to receive an invitation.</DialogContentText>
-                    <TextField variant="outlined" label="Full name" margin="normal" size="small" fullWidth></TextField>
-                    <TextField variant="outlined" label="Email" margin="normal" size="small" type="email" fullWidth></TextField>
-                    <TextField variant="outlined" label="Confirm Email" margin="normal" type="email" size="small" fullWidth></TextField>
+                    <TextField variant="outlined" label="Full name" value={fullName} onChange={handleNameChange} margin="normal" size="small" fullWidth></TextField>
+                    <TextField variant="outlined" label="Email" value={email} onChange={handleEmailChange} margin="normal" size="small" type="email" fullWidth></TextField>
+                    <TextField variant="outlined" label="Confirm Email" value={confirmEmail} onChange={handleConfirmEmailChange} margin="normal" type="email" size="small" fullWidth></TextField>
                 </DialogContent>
                 <DialogActions className="dialog-buttons">
                     <Button variant="contained" className="submit-button" onClick={submitButtonHandler}>Submit</Button>
