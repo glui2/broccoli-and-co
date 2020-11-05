@@ -8,9 +8,9 @@ describe("Body", () => {
         const { getByText } = render(<Body/>); 
 
         // act 
-        fireEvent.click(getByText("Request an Invite"));
+        fireEvent.click(getByText("Request an Invite", 'button'));
 
         // assert 
-        expect(getByText("inviteForm")).toBeVisible();
+        expect(getByText('Submit','button')).toBeVisible();
     })
 })

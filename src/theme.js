@@ -19,11 +19,17 @@ const theme = createMuiTheme({
                 fontSize: "3rem",
             }
         },
+        h6: {
+            fontSize: "0.8rem",
+            "@media (min-width:600px)": {
+                fontSize: "1.2rem",
+            }
+        },
         body1: {
             fontWeight: "200",
-            fontSize: "1rem",
+            fontSize: "0.7rem",
             "@media (min-width:600px)": {
-                fontSize: "1.5rem",
+                fontSize: "1rem",
             }
         },
         body2: {
