@@ -19,30 +19,26 @@ const Body = () => {
     const [confirmEmail, setConfirmEmail] = useState('');
 
     const handleNameChange = (e) => {
-        console.log(e);
         setFullName(e.target.value)
     }
 
     const handleEmailChange = (e) => {
-        console.log(e);
         setEmail(e.target.value)
     }
 
     const handleConfirmEmailChange = (e) => {
-        console.log(e);
         setConfirmEmail(e.target.value)
     }
 
     const inviteButtonClickHandler = () => { 
-        console.log(isFormVisible);
         setIsFormVisible(true); 
     }
 
     const submitButtonHandler = () => {
         // POST request to https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth
         const test = {
-            "name": "test",
-            "email": "test"
+            "name": fullName,
+            "email": email
         }
         axios.post('https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth', test).then( res => {
             console.log(res)
