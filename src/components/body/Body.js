@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { Button, Typography } from "@material-ui/core";
+import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
 import TextField from '@material-ui/core/TextField';
@@ -15,14 +16,21 @@ const Body = () => {
     const [isFormVisible, setIsFormVisible] = useState(false);
 
     const buttonClickHandler = () => { 
-        console.log(isFormVisible);
         setIsFormVisible(true); 
     }
 
     const submitButtonHandler = () => {
         // POST request to https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth
-
-        setIsFormVisible(false);
+        const test = {
+            "name": "test",
+            "email": "test"
+        }
+        axios.post('https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth', test).then( res => {
+            console.log(res)
+            if(res){
+                setIsFormVisible(false);
+            }
+        })
     }
 
     return (
