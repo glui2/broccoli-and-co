@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Button, Typography, useScrollTrigger } from "@material-ui/core";
+import { Button, Typography, LinearProgress } from "@material-ui/core";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -8,7 +8,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogForm from "./dialogForm/DialogForm";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
 import "./Body.scss";
 
 const Body = () => {
@@ -16,6 +17,33 @@ const Body = () => {
 
   const inviteButtonClickHandler = () => {
     setIsFormVisible(true);
+  };
+
+  const validateFullName = (fullName) => {
+    var errorMessage = "";
+    if (!fullName) {
+      errorMessage = "Please enter a name.";
+    } else if (!/^[a-zA-Z\s]{3,}$/.test(fullName)) {
+      errorMessage =
+        "Please enter at least 3 characters for your name, using only alphabetical letters and spaces.";
+    }
+    return errorMessage;
+  };
+
+  const validateEmailAddress = (emailAddress, confirmEmailAddress = null) => {
+    var errorMessage = "";
+    if (confirmEmailAddress && emailAddress !== confirmEmailAddress) {
+      errorMessage = "Email addresses do not match.";
+      console.log("dont match");
+    } else if (!emailAddress) {
+      errorMessage = "Please enter an email address.";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(emailAddress)
+    ) {
+      errorMessage =
+        "Please enter an email address in the format 'email@address.com'.";
+    }
+    return errorMessage;
   };
 
   return (
@@ -56,7 +84,70 @@ const Body = () => {
             Please fill in your details below, and click Send to receive an
             invitation.
           </DialogContentText>
-          <DialogForm />
+          <Formik
+            initialValues={{
+              fullName: "",
+              email: "",
+              confirmEmail: "",
+            }}
+            validate={(values) => {
+              const errors = {};
+              errors.fullName = validateFullName(values.fullName);
+              errors.email = validateEmailAddress(values.email);
+              errors.confirmEmail = validateEmailAddress(
+                values.confirmEmail,
+                values.email
+              );
+
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                setSubmitting(false);
+                alert(JSON.stringify(values, null, 2));
+                setIsFormVisible(false);
+              }, 500);
+            }}
+          >
+            {({ submitForm, isSubmitting }) => (
+              <Form className="invite-form">
+                <Field
+                  component={TextField}
+                  variant="outlined"
+                  size="small"
+                  margin="normal"
+                  name="fullName"
+                  type="name"
+                  label="Full Name"
+                  fullWidth
+                />
+                <Field
+                  component={TextField}
+                  variant="outlined"
+                  size="small"
+                  margin="normal"
+                  name="email"
+                  type="email"
+                  label="Email"
+                  fullWidth
+                />
+                <Field
+                  component={TextField}
+                  variant="outlined"
+                  size="small"
+                  margin="normal"
+                  name="confirmEmail"
+                  type="email"
+                  label="Confirm Email"
+                  fullWidth
+                />
+                {isSubmitting && <LinearProgress />}
+                <Button variant="contained" onClick={submitForm}>
+                  Submit
+                </Button>
+              </Form>
+            )}
+          </Formik>
         </DialogContent>
       </Dialog>
     </div>
