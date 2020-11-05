@@ -1,6 +1,6 @@
 // scss variables
 $backgroundImage: url("./broccoli_dark.jpg");
-$inviteButtonColor: linear-gradient(45deg, #dd7003 30%, #f99a3b 90%);
+$inviteButtonColor: linear-gradient(45deg, #caf761 30%, #9ddb38 90%);
 $submitButtonColor: #99b186;
 $fontColour: white;
 
@@ -46,11 +46,11 @@ $fontColour: white;
 }
 
 .dialog-buttons {
-  margin: auto;
+  margin: 2vh auto;
   justify-content: center;
 }
 
 .submit-button {
-  background: $submitButtonColor;
+  background: $inviteButtonColor;
   color: $fontColour;
 }
