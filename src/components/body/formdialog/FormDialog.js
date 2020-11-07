@@ -80,7 +80,7 @@ const FormDialog = () => {
                     )
                     .then((response) => {
                       // change to a thank you modal
-                      toggleFormDialog(isFormDialogVisible);
+                      toggleFormDialog();
                       console.log(response);
                       setSubmitting(false);
                     })

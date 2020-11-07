@@ -7,7 +7,7 @@ class DialogContextProvider extends Component {
     isFormDialogVisible: false,
     isConfirmDialogVisible: false,
   };
-  toggleFormDialog = (isFormDialogVisible) => {
+  toggleFormDialog = () => {
     this.setState((prevState, props) => {
       return { isFormDialogVisible: !prevState.isFormDialogVisible };
     });
