@@ -106,7 +106,7 @@ const Body = () => {
                 return errors;
               }
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, setErrors, props }) => {
               console.log("POST values");
               axios
                 .post(
@@ -116,11 +116,14 @@ const Body = () => {
                 .then((response) => {
                   setIsFormVisible(false); // change to a thank you modal
                   console.log(response);
+                  setSubmitting(false);
                 })
                 .catch((error) => {
-                  console.log(error);
+                  setErrors({
+                    confirmEmail: error.response.data.errorMessage,
+                  });
+                  setSubmitting(false);
                 });
-              setSubmitting(false);
             }}
           >
             {({ submitForm, isSubmitting }) => (
