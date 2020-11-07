@@ -98,7 +98,13 @@ const Body = () => {
                 values.email
               );
 
-              return errors;
+              const errorExists = Object.values(errors).some(
+                (value) => value !== ""
+              );
+
+              if (errorExists) {
+                return errors;
+              }
             }}
             onSubmit={(values, { setSubmitting }) => {
               console.log("POST values");
@@ -108,6 +114,7 @@ const Body = () => {
                   { name: values.fullName, email: values.email }
                 )
                 .then((response) => {
+                  setIsFormVisible(false); // change to a thank you modal
                   console.log(response);
                 })
                 .catch((error) => {
