@@ -5,7 +5,7 @@ export const DialogContext = createContext();
 class DialogContextProvider extends Component {
   state = {
     isFormDialogVisible: false,
-    isConfirmDialogVisible: false,
+    isSuccessDialogVisible: false,
   };
   toggleFormDialog = () => {
     this.setState((prevState, props) => {
@@ -13,10 +13,20 @@ class DialogContextProvider extends Component {
     });
   };
 
+  toggleSuccessDialog = () => {
+    this.setState((prevState, props) => {
+      return { isSuccessDialogVisible: !prevState.isSuccessDialogVisible };
+    });
+  };
+
   render() {
     return (
       <DialogContext.Provider
-        value={{ ...this.state, toggleFormDialog: this.toggleFormDialog }}
+        value={{
+          ...this.state,
+          toggleFormDialog: this.toggleFormDialog,
+          toggleSuccessDialog: this.toggleSuccessDialog,
+        }}
       >
         {this.props.children}
       </DialogContext.Provider>

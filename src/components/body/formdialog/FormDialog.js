@@ -37,7 +37,11 @@ const FormDialog = () => {
   return (
     <DialogContext.Consumer>
       {(context) => {
-        const { isFormDialogVisible, toggleFormDialog } = context;
+        const {
+          isFormDialogVisible,
+          toggleFormDialog,
+          toggleSuccessDialog,
+        } = context;
         return (
           <Dialog className="dialog-box" open={isFormDialogVisible}>
             <DialogTitle className="dialog-title">
@@ -81,11 +85,10 @@ const FormDialog = () => {
                     .then((response) => {
                       // change to a thank you modal
                       toggleFormDialog();
-                      console.log(response);
+                      toggleSuccessDialog();
                       setSubmitting(false);
                     })
                     .catch((error) => {
-                      console.log(error.message);
                       setErrors({
                         confirmEmail: error.response.data.errorMessage,
                       });
@@ -126,7 +129,7 @@ const FormDialog = () => {
                       fullWidth
                     />
                     {isSubmitting && <LinearProgress />}
-                    <div className="submit-button">
+                    <div className="dialog-button">
                       <Button
                         variant="contained"
                         disabled={isSubmitting}
