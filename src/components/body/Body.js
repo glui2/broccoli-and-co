@@ -15,10 +15,10 @@ const Body = () => {
         return (
           <div className="body-section">
             <Grid container direction="column" className="title-container">
-              <Grid item xs={12}>
+              <Grid item xs={10}>
                 <Box className="title-text-box">
                   <Grid container justify="center" spacing={2}>
-                    <Grid item xs={10}>
+                    <Grid item xs={12}>
                       <Typography variant="h3" color="secondary">
                         A better way to enjoy every day.
                       </Typography>
@@ -29,11 +29,7 @@ const Body = () => {
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
-                      <Button
-                        variant="contained"
-                        className="invite-button"
-                        onClick={toggleFormDialog}
-                      >
+                      <Button variant="contained" onClick={toggleFormDialog}>
                         Request an Invite
                       </Button>
                     </Grid>
