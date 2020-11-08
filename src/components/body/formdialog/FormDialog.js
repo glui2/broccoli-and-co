@@ -44,10 +44,10 @@ const FormDialog = () => {
         } = context;
         return (
           <Dialog className="dialog-box" open={isFormDialogVisible}>
-            <DialogTitle className="dialog-title">
-              Request an invitation
-            </DialogTitle>
             <DialogContent>
+              <DialogTitle className="dialog-title">
+                Request an invitation
+              </DialogTitle>
               <DialogContentText className="dialog-text">
                 Please fill in your details below, and click Submit to receive
                 an invitation.
@@ -134,6 +134,7 @@ const FormDialog = () => {
                         variant="contained"
                         disabled={isSubmitting}
                         onClick={submitForm}
+                        fullWidth
                       >
                         Submit
                       </Button>

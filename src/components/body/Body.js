@@ -40,9 +40,11 @@ const Body = () => {
                   </Grid>
                 </Box>
               </Grid>
+              <Grid item>
+                <FormDialog />
+                <SuccessDialog />
+              </Grid>
             </Grid>
-            <FormDialog />
-            <SuccessDialog />
           </div>
         );
       }}
