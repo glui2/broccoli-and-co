@@ -9,7 +9,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { DialogContext } from "../../../contexts/dialogContext";
 
-const validateFullName = (fullName) => {
+export const validateFullName = (fullName) => {
   var errorMessage = "";
   if (!fullName) {
     errorMessage = "Please enter a name.";
@@ -20,7 +20,10 @@ const validateFullName = (fullName) => {
   return errorMessage;
 };
 
-const validateEmailAddress = (emailAddress, confirmEmailAddress = null) => {
+export const validateEmailAddress = (
+  emailAddress,
+  confirmEmailAddress = null
+) => {
   var errorMessage = "";
   if (confirmEmailAddress && emailAddress !== confirmEmailAddress) {
     errorMessage = "Email addresses do not match.";

@@ -19,8 +19,7 @@ describe("SuccessDialog", () => {
       <App>
         <DialogContext.Provider
           value={{
-            ...this.state,
-            toggleSuccessDialog: true,
+            isSuccessDialogVisible: true,
           }}
         >
           <SuccessDialog />
