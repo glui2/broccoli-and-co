@@ -46,7 +46,11 @@ const FormDialog = () => {
           toggleSuccessDialog,
         } = context;
         return (
-          <Dialog className="dialog-box" open={isFormDialogVisible}>
+          <Dialog
+            className="dialog-box"
+            open={isFormDialogVisible}
+            onBackdropClick={toggleFormDialog}
+          >
             <DialogContent>
               <DialogTitle className="dialog-title">
                 Request an invitation

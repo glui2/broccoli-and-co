@@ -12,7 +12,10 @@ const SuccessDialog = () => {
       {(context) => {
         const { isSuccessDialogVisible, toggleSuccessDialog } = context;
         return (
-          <Dialog open={isSuccessDialogVisible}>
+          <Dialog
+            open={isSuccessDialogVisible}
+            onBackdropClick={toggleSuccessDialog}
+          >
             <DialogContent className="dialog-box">
               <DialogTitle className="dialog-title">All done!</DialogTitle>
               <DialogContentText className="dialog-text">
