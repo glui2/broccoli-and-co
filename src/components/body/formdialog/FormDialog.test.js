@@ -12,6 +12,7 @@ import FormDialog, {
 } from "./FormDialog";
 import DialogContextProvider from "../../../contexts/dialogContext";
 import axios from "axios";
+import SuccessDialog from "../successDialog/SuccessDialog";
 
 jest.mock("axios");
 
@@ -135,14 +136,38 @@ describe("FormDialog", () => {
       expect(axios.post).toHaveBeenCalledTimes(1);
     });
   });
-  //   it("Should change to the next dialog if the API returns an OK", () => {
-  //     // arrange
-  //     // act
-  //     // assert
-  //   });
-  //   it("Should not change to the next dialog if the API returns an ERROR", () => {
-  //     // arrange
-  //     // act
-  //     // assert
-  //   });
+  it("Should close FormDialog and show SuccessDialog if the API returns an OK", async () => {
+    // arrange
+    const { getByText, getByTestId } = render(
+      <DialogContextProvider
+        initialState={{
+          isSuccessDialogVisible: false,
+          isFormDialogVisible: true,
+        }}
+      >
+        <FormDialog />
+        <SuccessDialog />
+      </DialogContextProvider>
+    );
+    const data = { Response: "Registered" };
+    const fullName = getByTestId("nameField");
+    const email = getByTestId("emailField");
+    const confirmEmail = getByTestId("confirmEmailField");
+    axios.post.mockImplementationOnce(() => Promise.resolve(data));
+
+    // act
+    fireEvent.change(fullName, { target: { value: "Foo Bar" } });
+    fireEvent.change(email, { target: { value: "address@email.com" } });
+    fireEvent.change(confirmEmail, { target: { value: "address@email.com" } });
+    fireEvent.click(getByText("Submit", "button"));
+
+    // assert
+    await waitFor(() => {
+      expect(getByText("Request an invitation")).not.toBeVisible();
+    });
+
+    await waitFor(() => {
+      expect(getByText("All done!")).toBeVisible();
+    });
+  });
 });
