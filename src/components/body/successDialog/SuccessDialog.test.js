@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import App from "../../../App";
 import SuccessDialog from "./SuccessDialog";
-import { DialogContext } from "../../../contexts/dialogContext";
+import DialogContextProvider from "../../../contexts/dialogContext";
 
 describe("SuccessDialog", () => {
   afterEach(cleanup);
@@ -16,15 +16,14 @@ describe("SuccessDialog", () => {
   it("Should close the dialog after clicking the 'OK' button", () => {
     // arrange
     const { getByText } = render(
-      <App>
-        <DialogContext.Provider
-          value={{
-            isSuccessDialogVisible: true,
-          }}
-        >
-          <SuccessDialog />
-        </DialogContext.Provider>
-      </App>
+      <DialogContextProvider
+        initialState={{
+          isSuccessDialogVisible: true,
+          isFormDialogVisible: false,
+        }}
+      >
+        <SuccessDialog />
+      </DialogContextProvider>
     );
 
     // act
