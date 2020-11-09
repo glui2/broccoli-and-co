@@ -87,6 +87,7 @@ const FormDialog = () => {
                     )
                     .then((response) => {
                       // change to a thank you modal
+                      console.log(response);
                       toggleFormDialog();
                       toggleSuccessDialog();
                       setSubmitting(false);
@@ -109,6 +110,7 @@ const FormDialog = () => {
                       name="fullName"
                       type="name"
                       label="Full Name"
+                      inputProps={{ "data-testid": "nameField" }}
                       fullWidth
                     />
                     <Field
@@ -119,6 +121,7 @@ const FormDialog = () => {
                       name="email"
                       type="email"
                       label="Email"
+                      inputProps={{ "data-testid": "emailField" }}
                       fullWidth
                     />
                     <Field
@@ -129,6 +132,7 @@ const FormDialog = () => {
                       name="confirmEmail"
                       type="email"
                       label="Confirm Email"
+                      inputProps={{ "data-testid": "confirmEmailField" }}
                       fullWidth
                     />
                     {isSubmitting && <LinearProgress />}

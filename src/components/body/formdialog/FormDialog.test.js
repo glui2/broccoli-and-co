@@ -1,7 +1,7 @@
 import React from "react";
 import {
   render,
-  within,
+  waitFor,
   fireEvent,
   cleanup,
   getByText,
@@ -10,6 +10,10 @@ import FormDialog, {
   validateEmailAddress,
   validateFullName,
 } from "./FormDialog";
+import DialogContextProvider from "../../../contexts/dialogContext";
+import axios from "axios";
+
+jest.mock("axios");
 
 describe("FormDialog", () => {
   afterEach(cleanup);
@@ -33,7 +37,7 @@ describe("FormDialog", () => {
     // act
     const error = validateFullName(testName);
 
-    // assert
+    // assert;
     expect(error).toBe("Please enter a name.");
   });
   it("validateEmailAddress function should return 'Email addresses do not match.' error if inputs for Email and confirmEmail aren't identical.", () => {
@@ -69,25 +73,68 @@ describe("FormDialog", () => {
     // assert
     expect(error).toBe("Please enter an email address.");
   });
-  //   it("Should not call the onSubmit function if any of the fields have a validation error.", () => {
-  //     // arrange
-  //     const mockSubmit = jest.fn() ;
-  //     const { getByText } = render(<FormDialog />);
 
-  //     // act
-  //     fireEvent.click(getByText("Submit", "button"));
+  // test for bad input that displays red outline and red text
+  // no text no  red outline
+  // bad input
+  // red
+  // then good input
+  // no red
 
-  //     // assert
-  //     expect()
-  //   });
+  it("Should not send POST request if any of the fields have a validation error.", async () => {
+    // arrange
+    const { getByText } = render(
+      <DialogContextProvider
+        initialState={{
+          isSuccessDialogVisible: false,
+          isFormDialogVisible: true,
+        }}
+      >
+        <FormDialog />
+      </DialogContextProvider>
+    );
+    const data = { Response: "Registered" };
+    axios.post.mockImplementationOnce(() => Promise.resolve(data));
 
-  //   it("Should call the onSubmit function if all fields are successfully validated", () => {
-  //     // arrange
-  //     {
-  //     }
-  //     // act
-  //     // assert
-  //   });
+    // act (try to send empty form)
+    fireEvent.click(getByText("Submit", "button"));
+
+    // assert
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  it("Should send POST request if all fields have been successfully validated.", async () => {
+    // arrange
+    const { getByText, getByTestId } = render(
+      <DialogContextProvider
+        initialState={{
+          isSuccessDialogVisible: false,
+          isFormDialogVisible: true,
+        }}
+      >
+        <FormDialog />
+      </DialogContextProvider>
+    );
+    const data = { Response: "Registered" };
+    const fullName = getByTestId("nameField");
+    const email = getByTestId("emailField");
+    const confirmEmail = getByTestId("confirmEmailField");
+
+    axios.post.mockImplementationOnce(() => Promise.resolve(data));
+
+    // act
+    fireEvent.change(fullName, { target: { value: "Foo Bar" } });
+    fireEvent.change(email, { target: { value: "address@email.com" } });
+    fireEvent.change(confirmEmail, { target: { value: "address@email.com" } });
+    fireEvent.click(getByText("Submit", "button"));
+
+    // assert
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledTimes(1);
+    });
+  });
   //   it("Should change to the next dialog if the API returns an OK", () => {
   //     // arrange
   //     // act
