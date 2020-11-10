@@ -11,7 +11,7 @@ This project was developed with React and Webpack (through create-react-app), wi
 After cloning the repository you can run `npm install` (or `yarn install`) to install the required dependencies. 
 Once this has completed you can run the following commands to run the web app. 
 
-## Commands to run
+## Running the project
 
 In the project directory, you can run:
 
@@ -19,6 +19,8 @@ In the project directory, you can run:
 
 This will run the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Running tests
 
 ### Windows: `npm test <filename.test.js>`    Mac: `yarn test <filename.test.js>` 
 
