@@ -71,6 +71,8 @@ describe("When the FormDialog is visible to the user", () => {
     expect(error).toBe("Please enter an email address.");
   });
 
+  // ----------------  integration tests ---------------- //
+
   it("The form should NOT send POST request if any of the fields have a validation error.", async () => {
     // arrange
     const { getByText } = render(
@@ -94,39 +96,6 @@ describe("When the FormDialog is visible to the user", () => {
       expect(axios.post).toHaveBeenCalledTimes(0);
     });
   });
-
-  it("The form SHOULD send POST request if all fields have been successfully validated.", async () => {
-    // arrange
-    const { getByText, getByTestId } = render(
-      <DialogContextProvider
-        initialState={{
-          isSuccessDialogVisible: false,
-          isFormDialogVisible: true,
-        }}
-      >
-        <FormDialog />
-      </DialogContextProvider>
-    );
-    const data = { Response: "Registered" };
-    const fullName = getByTestId("nameField");
-    const email = getByTestId("emailField");
-    const confirmEmail = getByTestId("confirmEmailField");
-
-    axios.post.mockImplementationOnce(() => Promise.resolve(data));
-
-    // act
-    fireEvent.change(fullName, { target: { value: "Foo Bar" } });
-    fireEvent.change(email, { target: { value: "address@email.com" } });
-    fireEvent.change(confirmEmail, { target: { value: "address@email.com" } });
-    fireEvent.click(getByText("Submit", "button"));
-
-    // assert
-    await waitFor(() => {
-      expect(axios.post).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  // ----------------  integration test ---------------- //
 
   it("The form dialog should close and success dialog should show if the form is submitted successfully", async () => {
     // arrange
