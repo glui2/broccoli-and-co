@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  render,
-  waitFor,
-  fireEvent,
-  cleanup,
-  getByText,
-} from "@testing-library/react";
+import { render, waitFor, fireEvent, cleanup } from "@testing-library/react";
 import FormDialog, {
   validateEmailAddress,
   validateFullName,
@@ -16,8 +10,10 @@ import SuccessDialog from "../successDialog/SuccessDialog";
 
 jest.mock("axios");
 
-describe("FormDialog", () => {
+describe("When the FormDialog is visible to the user", () => {
   afterEach(cleanup);
+
+  // ----------------  unit tests ---------------- //
 
   it("validateFullName function should return 'Please enter at least 3 characters for your name, using only alphabetical letters and spaces.' error if name input is less than 3 characters long", () => {
     // arrange
@@ -75,14 +71,7 @@ describe("FormDialog", () => {
     expect(error).toBe("Please enter an email address.");
   });
 
-  // test for bad input that displays red outline and red text
-  // no text no  red outline
-  // bad input
-  // red
-  // then good input
-  // no red
-
-  it("Should not send POST request if any of the fields have a validation error.", async () => {
+  it("The form should NOT send POST request if any of the fields have a validation error.", async () => {
     // arrange
     const { getByText } = render(
       <DialogContextProvider
@@ -106,7 +95,7 @@ describe("FormDialog", () => {
     });
   });
 
-  it("Should send POST request if all fields have been successfully validated.", async () => {
+  it("The form SHOULD send POST request if all fields have been successfully validated.", async () => {
     // arrange
     const { getByText, getByTestId } = render(
       <DialogContextProvider
@@ -136,7 +125,10 @@ describe("FormDialog", () => {
       expect(axios.post).toHaveBeenCalledTimes(1);
     });
   });
-  it("Should close FormDialog and show SuccessDialog if the API returns an OK", async () => {
+
+  // ----------------  integration test ---------------- //
+
+  it("The form dialog should close and success dialog should show if the form is submitted successfully", async () => {
     // arrange
     const { getByText, getByTestId } = render(
       <DialogContextProvider

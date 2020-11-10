@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  render,
-  within,
-  fireEvent,
-  cleanup,
-  getByText,
-} from "@testing-library/react";
-import App from "../../../App";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import SuccessDialog from "./SuccessDialog";
 import DialogContextProvider from "../../../contexts/dialogContext";
 
-describe("SuccessDialog", () => {
+describe("When the success dialog is visible to the user", () => {
   afterEach(cleanup);
 
-  it("Should close the dialog after clicking the 'OK' button", () => {
+  // ----------------  integration test ---------------- //
+
+  it("The success dialog should close after clicking the 'OK' button", () => {
     // arrange
     const { getByText } = render(
       <DialogContextProvider
