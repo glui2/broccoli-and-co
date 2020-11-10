@@ -3,10 +3,17 @@ import React, { createContext, Component } from "react";
 export const DialogContext = createContext();
 
 class DialogContextProvider extends Component {
-  state = {
-    isFormDialogVisible: false,
-    isSuccessDialogVisible: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = props.initialState
+      ? props.initialState
+      : {
+          isFormDialogVisible: false,
+          isSuccessDialogVisible: false,
+        };
+  }
+
   toggleFormDialog = () => {
     this.setState((prevState, props) => {
       return { isFormDialogVisible: !prevState.isFormDialogVisible };

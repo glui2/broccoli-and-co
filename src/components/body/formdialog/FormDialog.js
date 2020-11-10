@@ -9,7 +9,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { DialogContext } from "../../../contexts/dialogContext";
 
-const validateFullName = (fullName) => {
+export const validateFullName = (fullName) => {
   var errorMessage = "";
   if (!fullName) {
     errorMessage = "Please enter a name.";
@@ -20,7 +20,10 @@ const validateFullName = (fullName) => {
   return errorMessage;
 };
 
-const validateEmailAddress = (emailAddress, confirmEmailAddress = null) => {
+export const validateEmailAddress = (
+  emailAddress,
+  confirmEmailAddress = null
+) => {
   var errorMessage = "";
   if (confirmEmailAddress && emailAddress !== confirmEmailAddress) {
     errorMessage = "Email addresses do not match.";
@@ -43,11 +46,15 @@ const FormDialog = () => {
           toggleSuccessDialog,
         } = context;
         return (
-          <Dialog className="dialog-box" open={isFormDialogVisible}>
-            <DialogTitle className="dialog-title">
-              Request an invitation
-            </DialogTitle>
+          <Dialog
+            className="dialog-box"
+            open={isFormDialogVisible}
+            onBackdropClick={toggleFormDialog}
+          >
             <DialogContent>
+              <DialogTitle className="dialog-title">
+                Request an invitation
+              </DialogTitle>
               <DialogContentText className="dialog-text">
                 Please fill in your details below, and click Submit to receive
                 an invitation.
@@ -84,6 +91,7 @@ const FormDialog = () => {
                     )
                     .then((response) => {
                       // change to a thank you modal
+                      console.log(response);
                       toggleFormDialog();
                       toggleSuccessDialog();
                       setSubmitting(false);
@@ -106,6 +114,7 @@ const FormDialog = () => {
                       name="fullName"
                       type="name"
                       label="Full Name"
+                      inputProps={{ "data-testid": "nameField" }}
                       fullWidth
                     />
                     <Field
@@ -116,6 +125,7 @@ const FormDialog = () => {
                       name="email"
                       type="email"
                       label="Email"
+                      inputProps={{ "data-testid": "emailField" }}
                       fullWidth
                     />
                     <Field
@@ -126,6 +136,7 @@ const FormDialog = () => {
                       name="confirmEmail"
                       type="email"
                       label="Confirm Email"
+                      inputProps={{ "data-testid": "confirmEmailField" }}
                       fullWidth
                     />
                     {isSubmitting && <LinearProgress />}
@@ -134,6 +145,7 @@ const FormDialog = () => {
                         variant="contained"
                         disabled={isSubmitting}
                         onClick={submitForm}
+                        fullWidth
                       >
                         Submit
                       </Button>

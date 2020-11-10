@@ -12,23 +12,26 @@ const SuccessDialog = () => {
       {(context) => {
         const { isSuccessDialogVisible, toggleSuccessDialog } = context;
         return (
-          <Dialog className="dialog-box" open={isSuccessDialogVisible}>
-            <DialogTitle className="dialog-title">All done!</DialogTitle>
-            <DialogContent>
+          <Dialog
+            open={isSuccessDialogVisible}
+            onBackdropClick={toggleSuccessDialog}
+          >
+            <DialogContent className="dialog-box">
+              <DialogTitle className="dialog-title">All done!</DialogTitle>
               <DialogContentText className="dialog-text">
                 You will be one of the first to experience Broccoli &amp; Co.
                 when we launch.
               </DialogContentText>
+              <div className="dialog-button">
+                <Button
+                  variant="contained"
+                  onClick={toggleSuccessDialog}
+                  fullWidth
+                >
+                  OK
+                </Button>
+              </div>
             </DialogContent>
-            <div className="dialog-button">
-              <Button
-                variant="contained"
-                onClick={toggleSuccessDialog}
-                fullWidth
-              >
-                OK
-              </Button>
-            </div>
           </Dialog>
         );
       }}
