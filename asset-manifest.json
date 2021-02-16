@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/broccoli-and-co/static/css/main.19d326b5.chunk.css",
+    "main.js": "/broccoli-and-co/static/js/main.923644d4.chunk.js",
+    "main.js.map": "/broccoli-and-co/static/js/main.923644d4.chunk.js.map",
+    "runtime-main.js": "/broccoli-and-co/static/js/runtime-main.9ec2d097.js",
+    "runtime-main.js.map": "/broccoli-and-co/static/js/runtime-main.9ec2d097.js.map",
+    "static/js/2.0c31c04c.chunk.js": "/broccoli-and-co/static/js/2.0c31c04c.chunk.js",
+    "static/js/2.0c31c04c.chunk.js.map": "/broccoli-and-co/static/js/2.0c31c04c.chunk.js.map",
+    "index.html": "/broccoli-and-co/index.html",
+    "static/css/main.19d326b5.chunk.css.map": "/broccoli-and-co/static/css/main.19d326b5.chunk.css.map",
+    "static/js/2.0c31c04c.chunk.js.LICENSE.txt": "/broccoli-and-co/static/js/2.0c31c04c.chunk.js.LICENSE.txt",
+    "static/media/Body.scss": "/broccoli-and-co/static/media/broccoli_dark.b17a066b.jpg",
+    "static/media/broccoli_logo.1818539d.svg": "/broccoli-and-co/static/media/broccoli_logo.1818539d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9ec2d097.js",
+    "static/js/2.0c31c04c.chunk.js",
+    "static/css/main.19d326b5.chunk.css",
+    "static/js/main.923644d4.chunk.js"
+  ]
+}
