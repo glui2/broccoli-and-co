@@ -6,7 +6,7 @@ Clicking the "REQUEST AN INVITE" button shows a form for the user to complete if
 
 This project was developed with React and Webpack (through create-react-app), with the help of Material-UI and SCSS for visuals and components and Formik to generate and validate the form. Tests were created using react-testing-library. 
 
-The deployed version can be viewed at https://hidden-ridge-66578.herokuapp.com/ 
+The deployed version can be viewed at https://glui2.github.io/broccoli-and-co/
 
 ## Setting up the project
 
