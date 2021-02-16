@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.da803757.chunk.css",
+    "main.js": "/static/js/main.923644d4.chunk.js",
+    "main.js.map": "/static/js/main.923644d4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ed73f775.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ed73f775.js.map",
+    "static/js/2.0c31c04c.chunk.js": "/static/js/2.0c31c04c.chunk.js",
+    "static/js/2.0c31c04c.chunk.js.map": "/static/js/2.0c31c04c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.da803757.chunk.css.map": "/static/css/main.da803757.chunk.css.map",
+    "static/js/2.0c31c04c.chunk.js.LICENSE.txt": "/static/js/2.0c31c04c.chunk.js.LICENSE.txt",
+    "static/media/Body.scss": "/static/media/broccoli_dark.b17a066b.jpg",
+    "static/media/broccoli_logo.1818539d.svg": "/static/media/broccoli_logo.1818539d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed73f775.js",
+    "static/js/2.0c31c04c.chunk.js",
+    "static/css/main.da803757.chunk.css",
+    "static/js/main.923644d4.chunk.js"
+  ]
+}
